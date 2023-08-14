@@ -26,7 +26,9 @@ export function unescapeString(s: string) {
 
 export function normalizeURI(uri: string) {
   try {
-    return encode(uri);
+    uri = encode(uri);
+    uri = uri.replaceAll("%7B%7B", "{{").replaceAll("%7D%7D", "}}"); //
+    return uri;
   } catch (err) {
     return uri;
   }
